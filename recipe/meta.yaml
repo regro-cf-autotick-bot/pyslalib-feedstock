@@ -1,5 +1,5 @@
 {% set name = "pyslalib" %}
-{% set version = "1.0.4" %}
+{% set version = "1.0.10" %}
 
 
 package:
@@ -7,17 +7,18 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pySLALIB-{{ version }}.tar.gz
-  sha256: 21d0e1ae6fc73ade9c90ec9e956b2da33163383388cc84e5ec58994bf66c8b35
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: da8663bdf9db51e345214a0add057ca7f52f7a892302044e8449b730dac1b085
 
 build:
   skip: true  # [win]
-  number: 6
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('fortran') }}
   host:
     - numpy
